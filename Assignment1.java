@@ -18,10 +18,12 @@ public class Assignment1{
         n = sc.nextInt();
         step ++;
 
-        int option, pack = 0;
+        int option, pack = 0, perzBook = 0;
+        //perzBook is for the option to personalize a book
         int numBooks = 0, numMarks = 0, numPaints = 0, remain = 0;
         double payBook = 0., payMark = 0., payPaint = 0.;
         double tot = 0., subtot = 0., tax = 0., realSub = 0., discount = 0.;
+        String message = "";
 
         while (n != 1 && n != 2){
           //handle invalid values
@@ -96,13 +98,41 @@ public class Assignment1{
           } while (option != 5);
 
           if (step % 3 != 0) {
+            // no discount
+            if (numBooks > 0) {
+              // add an option to personalize a book
+              System.out.print("Would you like to personalize a book for an additional $1.00?"
+              + '\n' + "(1 = Yes, 2 = No) ");
+              perzBook = sc.nextInt();
+
+              while (perzBook != 1 && perzBook != 2){
+                //handle invalid values
+                System.out.print("Please enter a valid option (1 = Yes, 2 = No) ");
+                perzBook = sc.nextInt();
+              }
+
+              if (perzBook == 1) {
+                System.out.print("Enter your message > ");
+                message = sc.next();
+              }
+            }
+
             System.out.println("------------------------------------------");
             System.out.println("You did not get a discount! Better luck next time!");
 
-            if (numBooks > 0) {
+            // print out receipt
+            if (numBooks > 0 && perzBook == 1) {
+              System.out.printf("    %d Normal Book(s):         $%.2f\n",
+              numBooks-1, payBook-priBook);
+              System.out.printf("    1 Personalized Book:      $%.2f\n    (message: %s)\n",
+              priBook+1, message);
+            }
+
+            else if (numBooks > 0 && perzBook == 2) {
               System.out.printf("    %d Book(s):                $%.2f\n",
               numBooks, payBook);
             }
+
             if (numMarks > 0) {
               // show packs / single bookmarks
               if (pack > 0 && remain > 0){
@@ -125,18 +155,35 @@ public class Assignment1{
               System.out.printf("    %d Paintings of Book(s):   $%.2f\n",
               numBooks, payPaint);
             }
-            subtot = payBook + payMark + payPaint;
-            tax = subtot * 0.07;
-            tot = subtot + tax;
-            System.out.println(" ");
-            System.out.printf("Subtotal:                     $%.2f\n", subtot);
-            System.out.printf("Tax:                          $%.2f\n", tax);
-            System.out.println(" ");
-            System.out.printf("Total:                        $%.2f\n", tot);
-            System.out.println(" ");
-            System.out.println("------------------------------------------");
 
-            //payment
+            // personalized book requires one more $
+            if (perzBook == 1) {
+              subtot = payBook + 1 + payMark + payPaint;
+              tax = subtot * 0.07;
+              tot = subtot + tax;
+              System.out.println(" ");
+              System.out.printf("Subtotal:                     $%.2f\n", subtot);
+              System.out.printf("Tax:                          $%.2f\n", tax);
+              System.out.println(" ");
+              System.out.printf("Total:                        $%.2f\n", tot);
+              System.out.println(" ");
+              System.out.println("------------------------------------------");
+            }
+
+            else {
+              subtot = payBook + payMark + payPaint;
+              tax = subtot * 0.07;
+              tot = subtot + tax;
+              System.out.println(" ");
+              System.out.printf("Subtotal:                     $%.2f\n", subtot);
+              System.out.printf("Tax:                          $%.2f\n", tax);
+              System.out.println(" ");
+              System.out.printf("Total:                        $%.2f\n", tot);
+              System.out.println(" ");
+              System.out.println("------------------------------------------");
+            }
+
+            // payment
             System.out.println(" ");
             System.out.print("Enter amount paid (no dollar sign) > ");
             money = sc.nextDouble();
@@ -161,12 +208,41 @@ public class Assignment1{
           } // end of if -  no discount ones
 
           else {
+            // discount
+            if (numBooks > 0) {
+              // add an option to personalize a book
+              System.out.print("Would you like to personalize a book for an additional $1.00?"
+              + '\n' + "(1 = Yes, 2 = No) ");
+              perzBook = sc.nextInt();
+
+              while (perzBook != 1 && perzBook != 2){
+                //handle invalid values
+                System.out.print("Please enter a valid option (1 = Yes, 2 = No) ");
+                perzBook = sc.nextInt();
+              }
+
+              if (perzBook == 1) {
+                System.out.print("Enter your message > ");
+                message = sc.next();
+              }
+            }
+
             System.out.println("------------------------------------------");
             System.out.println("You won a 10% discount!");
-            if (numBooks > 0) {
+
+            // print out receipt
+            if (numBooks > 0 && perzBook == 1) {
+                System.out.printf("    %d Normal Book(s):         $%.2f\n",
+                numBooks-1, payBook-priBook);
+                System.out.printf("    1 Personalized Book:      $%.2f\n    (message: %s)\n",
+                priBook+1, message);
+              }
+
+            else if (numBooks > 0 && perzBook == 2) {
               System.out.printf("    %d Book(s):                $%.2f\n",
               numBooks, payBook);
             }
+
             if (numMarks > 0) {
               // show packs / single bookmarks
               if (pack > 0 && remain > 0){
@@ -189,19 +265,39 @@ public class Assignment1{
               System.out.printf("    %d Paintings of Book(s):   $%.2f\n",
               numPaints, payPaint);
             }
-            subtot = payBook + payMark + payPaint;
-            discount = subtot * 0.1;
-            realSub = subtot - discount;
-            tax = realSub * 0.07;
-            tot = realSub + tax;
-            System.out.printf("Discount! Saved:             -$%.2f\n", discount);
-            System.out.println("");
-            System.out.printf("Subtotal:                     $%.2f\n", realSub);
-            System.out.printf("Tax:                          $%.2f\n", tax);
-            System.out.println(" ");
-            System.out.printf("Total:                        $%.2f\n", tot);
-            System.out.println(" ");
-            System.out.println("------------------------------------------");
+
+            // personalized book requires one more $
+            if (perzBook == 1) {
+              subtot = payBook + 1 + payMark + payPaint;
+              discount = subtot * 0.1;
+              realSub = subtot - discount;
+              tax = realSub * 0.07;
+              tot = realSub + tax;
+              System.out.printf("Discount! Saved:             -$%.2f\n", discount);
+              System.out.println("");
+              System.out.printf("Subtotal:                     $%.2f\n", realSub);
+              System.out.printf("Tax:                          $%.2f\n", tax);
+              System.out.println(" ");
+              System.out.printf("Total:                        $%.2f\n", tot);
+              System.out.println(" ");
+              System.out.println("------------------------------------------");
+            }
+
+            else {
+              subtot = payBook + payMark + payPaint;
+              discount = subtot * 0.1;
+              realSub = subtot - discount;
+              tax = realSub * 0.07;
+              tot = realSub + tax;
+              System.out.printf("Discount! Saved:             -$%.2f\n", discount);
+              System.out.println("");
+              System.out.printf("Subtotal:                     $%.2f\n", realSub);
+              System.out.printf("Tax:                          $%.2f\n", tax);
+              System.out.println(" ");
+              System.out.printf("Total:                        $%.2f\n", tot);
+              System.out.println(" ");
+              System.out.println("------------------------------------------");
+            }
 
             //payment
             System.out.println(" ");
@@ -233,7 +329,7 @@ public class Assignment1{
         else if (n == 2){
           System.out.println("No more customers! Closing!");
           break;}
-        } //while n == 1 loop
+        }
 
 
       }
