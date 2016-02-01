@@ -1,5 +1,8 @@
-// CS 0401 Assignment 1
+// CS0401 Assignment 1
+// Due 02/01/2016
 // Created by Bingjie Wang - UPitt
+
+// This is a simple point-of-sale system to sell books
 
 import java.util.Scanner;
 
@@ -22,7 +25,7 @@ public class Assignment1{
         step ++;
 
         int option, pack = 0, perzBook = 0;
-        //perzBook is for the option to personalize a book
+        // perzBook is for the option to personalize a book
         int numBooks = 0, numMarks = 0, numPaints = 0, remain = 0;
         double payBook = 0., payMark = 0., payPaint = 0.;
         double tot = 0., subtot = 0., tax = 0., realSub = 0., discount = 0.;
@@ -75,7 +78,7 @@ public class Assignment1{
               else {
                 // buy > 6 bookmarks, always give packs first
                 pack = pack + (numInpMarks/6); // int division
-                remain = remain + (numInpMarks%6); //remainder
+                remain = remain + (numInpMarks%6); // remainder
                 payMark = (remain * priMark) + (pack * 5.);
                 numMarks = numMarks + numInpMarks; // total bookmarks
               }
@@ -225,7 +228,7 @@ public class Assignment1{
               perzBook = sc.nextInt();
 
               while (perzBook != 1 && perzBook != 2){
-                //handle invalid values
+                // handle invalid values
                 System.out.print("Please enter a valid option (1 = Yes, 2 = No) ");
                 perzBook = sc.nextInt();
               }
