@@ -8,10 +8,13 @@ public class Assignment1{
   public static void main(String [] args){
 
       int n, step = 0;
-      //step stores the customer No.; needed for third customer discount
+      // step stores the customer No.; needed for third customer discount
       double priBook = 5., priMark = 1., priPrint = 100., money;
 
       Scanner sc = new Scanner(System.in);
+      Scanner scString = new Scanner(System.in);
+      // Does not work if trying to scan text with nextLine()
+      // *after* using nextInt() with the same scanner
       System.out.print("More customers in line? (1 = Yes, 2 = No) ");
 
       while (true){
@@ -26,7 +29,7 @@ public class Assignment1{
         String message = "";
 
         while (n != 1 && n != 2){
-          //handle invalid values
+          // handle invalid values
           System.out.print("More customers in line? (1 = Yes, 2 = No) ");
           n = sc.nextInt();
         }
@@ -106,14 +109,14 @@ public class Assignment1{
               perzBook = sc.nextInt();
 
               while (perzBook != 1 && perzBook != 2){
-                //handle invalid values
+                // handle invalid values
                 System.out.print("Please enter a valid option (1 = Yes, 2 = No) ");
                 perzBook = sc.nextInt();
               }
 
               if (perzBook == 1) {
                 System.out.print("Enter your message > ");
-                message = sc.next();
+                message = scString.nextLine();
               }
             }
 
@@ -121,9 +124,15 @@ public class Assignment1{
             System.out.println("You did not get a discount! Better luck next time!");
 
             // print out receipt
-            if (numBooks > 0 && perzBook == 1) {
+            if (numBooks > 1 && perzBook == 1) {
               System.out.printf("    %d Normal Book(s):         $%.2f\n",
               numBooks-1, payBook-priBook);
+              System.out.printf("    1 Personalized Book:      $%.2f\n    (message: %s)\n",
+              priBook+1, message);
+            }
+
+            else if (numBooks == 1 && perzBook == 1) {
+              // only personalized book - do not print out '0 Normal Book'
               System.out.printf("    1 Personalized Book:      $%.2f\n    (message: %s)\n",
               priBook+1, message);
             }
@@ -223,7 +232,7 @@ public class Assignment1{
 
               if (perzBook == 1) {
                 System.out.print("Enter your message > ");
-                message = sc.next();
+                message = scString.nextLine();
               }
             }
 
@@ -231,12 +240,18 @@ public class Assignment1{
             System.out.println("You won a 10% discount!");
 
             // print out receipt
-            if (numBooks > 0 && perzBook == 1) {
-                System.out.printf("    %d Normal Book(s):         $%.2f\n",
-                numBooks-1, payBook-priBook);
-                System.out.printf("    1 Personalized Book:      $%.2f\n    (message: %s)\n",
-                priBook+1, message);
-              }
+            if (numBooks > 1 && perzBook == 1) {
+              System.out.printf("    %d Normal Book(s):         $%.2f\n",
+              numBooks-1, payBook-priBook);
+              System.out.printf("    1 Personalized Book:      $%.2f\n    (message: %s)\n",
+              priBook+1, message);
+            }
+
+            else if (numBooks == 1 && perzBook == 1) {
+              // only personalized book - do not print out '0 Normal Book'
+              System.out.printf("    1 Personalized Book:      $%.2f\n    (message: %s)\n",
+              priBook+1, message);
+            }
 
             else if (numBooks > 0 && perzBook == 2) {
               System.out.printf("    %d Book(s):                $%.2f\n",
@@ -299,7 +314,7 @@ public class Assignment1{
               System.out.println("------------------------------------------");
             }
 
-            //payment
+            // payment
             System.out.println(" ");
             System.out.print("Enter amount paid (no dollar sign) > ");
             money = sc.nextDouble();
