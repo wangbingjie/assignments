@@ -166,6 +166,8 @@ public class Blackjack {
 
           // Now player stays
           // dealer turns cards
+          if (score <= 21) {
+
           System.out.println("DEALER DEAL");
           r = rng.nextInt(13); // 0-12
           r += 1; // 1-13 -> value of the card
@@ -228,16 +230,20 @@ public class Blackjack {
 
             if (score <= 21 && scoreDealer > 21) {
               houseStay = true;
+              System.out.println("Stay!");
             } else if (scoreDealer >= 18 && scoreDealer <= 21 ) {
               houseStay = true;
+              System.out.println("Stay!");
             } else if (scoreDealer == 17 && numAcesDealer >= 1) {
               houseStay = false;
             } else if (scoreDealer == 17 && numAcesDealer == 0) {
               houseStay = true;
+              System.out.println("Stay!");
             } else {
-              houseStay = true;
+              houseStay = false;
             }
           }
+        }
 
           // Now get the game results
           // At the end of each hand, the amount of money won or lost,
