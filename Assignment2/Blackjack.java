@@ -252,7 +252,7 @@ public class Blackjack {
           // The player receives all of their money back, plus 1.5 times their bet.
           System.out.println("The player has a blackjack!");
           objPlayer._money = objPlayer._money + betAmount * 1.5;
-          System.out.printf("You won $%.2f!", betAmount*1.5);
+          System.out.printf("You won $%.2f! %n", betAmount*1.5);
           objPlayer._won += 1;
         } else if (score == scoreDealer) {
           // the player does not lose or gain any money
@@ -266,26 +266,26 @@ public class Blackjack {
           System.out.println("Player score: " + score);
           System.out.println("Delaer score: " + scoreDealer);
           System.out.println("Player won!");
-          System.out.printf("You won $%.2f!", betAmount);
+          System.out.printf("You won $%.2f! %n", betAmount);
           objPlayer._won += 1;
         } else if (score < scoreDealer && scoreDealer <= 21 ){
           System.out.println("Player score: " + score);
           System.out.println("Delaer score: " + scoreDealer);
           objPlayer._money = objPlayer._money - betAmount;
           System.out.println("Dealer won!");
-          System.out.printf("You lost $%.2f!", betAmount);
+          System.out.printf("You lost $%.2f! %n", betAmount);
         } else if (scoreDealer > 21) {
           System.out.println("Player score: " + score);
           System.out.println("Delaer score: " + scoreDealer);
           System.out.println("Dealer busted!");
-          System.out.printf("You won $%.2f!", betAmount);
+          System.out.printf("You won $%.2f! %n", betAmount);
           objPlayer._won += 1;
         } else if (score > 21) {
           // System.out.println("Player score: " + score);
           // System.out.println("Delaer score: " + scoreDealer);
           System.out.println("Player busted!");
           objPlayer._money = objPlayer._money - betAmount;
-          System.out.printf("You lost $%.2f!", betAmount);
+          System.out.printf("You lost $%.2f! %n", betAmount);
         }
         endGame = false;
         if (objPlayer._money == 0) {
