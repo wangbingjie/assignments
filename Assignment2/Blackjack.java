@@ -164,10 +164,9 @@ public class Blackjack {
           }
         }
 
-          // Now player stays
-          // dealer turns cards
-          if (score <= 21) {
-
+        // Now player stays
+        // dealer turns cards
+        if (score <= 21) {
           System.out.println("DEALER DEAL");
           r = rng.nextInt(13); // 0-12
           r += 1; // 1-13 -> value of the card
@@ -245,57 +244,57 @@ public class Blackjack {
           }
         }
 
-          // Now get the game results
-          // At the end of each hand, the amount of money won or lost,
-          // along with the result, should be displayed
-          if (blackjack == true) {
-            // The player has a Blackjack (exactly 21 points from only two cards)
-            // The player receives all of their money back, plus 1.5 times their bet.
-            System.out.println("The player has a blackjack!");
-            objPlayer._money = objPlayer._money + betAmount * 1.5;
-            System.out.println("You won $" + (betAmount*1.5) + "!");
-            objPlayer._won += 1;
-          } else if (score == scoreDealer) {
-            // the player does not lose or gain any money
-            System.out.println("Player score: " + score);
-            System.out.println("Delaer score: " + scoreDealer);
-            System.out.println("Push!");
-          } else if (score > scoreDealer && score <= 21 ) {
-            // The player receives all of their money back,
-            // plus wins that exact same amount they bet.
-            objPlayer._money = objPlayer._money + betAmount;
-            System.out.println("Player score: " + score);
-            System.out.println("Delaer score: " + scoreDealer);
-            System.out.println("Player won!");
-            System.out.println("You won $" + betAmount + "!");
-            objPlayer._won += 1;
-          } else if (score < scoreDealer && scoreDealer <= 21 ){
-            System.out.println("Player score: " + score);
-            System.out.println("Delaer score: " + scoreDealer);
-            objPlayer._money = objPlayer._money - betAmount;
-            System.out.println("Dealer won!");
-            System.out.println("You lost $" + betAmount + "!");
-          } else if (scoreDealer > 21) {
-            System.out.println("Player score: " + score);
-            System.out.println("Delaer score: " + scoreDealer);
-            System.out.println("Dealer busted!");
-            // System.out.println("Player won!");
-            System.out.println("You won $" + betAmount + "!");
-            objPlayer._won += 1;
-          } else if (score > 21) {
-            // System.out.println("Player score: " + score);
-            // System.out.println("Delaer score: " + scoreDealer);
-            System.out.println("Player busted!");
-            objPlayer._money = objPlayer._money - betAmount;
-            System.out.println("You lost $" + betAmount + "!");
-          }
-          endGame = false;
-          if (objPlayer._money == 0) {
-            System.out.println("You have no more money to bet!");
-            endGame = true;
-            objPlayer.writeInfo(name);
-            System.out.println("Thank you for playing Infinite Blackjack!");
-          }
+        // Now get the game results
+        // At the end of each hand, the amount of money won or lost,
+        // along with the result, should be displayed
+        if (blackjack == true) {
+          // The player has a Blackjack (exactly 21 points from only two cards)
+          // The player receives all of their money back, plus 1.5 times their bet.
+          System.out.println("The player has a blackjack!");
+          objPlayer._money = objPlayer._money + betAmount * 1.5;
+          System.out.println("You won $" + (betAmount*1.5) + "!");
+          objPlayer._won += 1;
+        } else if (score == scoreDealer) {
+          // the player does not lose or gain any money
+          System.out.println("Player score: " + score);
+          System.out.println("Delaer score: " + scoreDealer);
+          System.out.println("Push!");
+        } else if (score > scoreDealer && score <= 21 ) {
+          // The player receives all of their money back,
+          // plus wins that exact same amount they bet.
+          objPlayer._money = objPlayer._money + betAmount;
+          System.out.println("Player score: " + score);
+          System.out.println("Delaer score: " + scoreDealer);
+          System.out.println("Player won!");
+          System.out.println("You won $" + betAmount + "!");
+          objPlayer._won += 1;
+        } else if (score < scoreDealer && scoreDealer <= 21 ){
+          System.out.println("Player score: " + score);
+          System.out.println("Delaer score: " + scoreDealer);
+          objPlayer._money = objPlayer._money - betAmount;
+          System.out.println("Dealer won!");
+          System.out.println("You lost $" + betAmount + "!");
+        } else if (scoreDealer > 21) {
+          System.out.println("Player score: " + score);
+          System.out.println("Delaer score: " + scoreDealer);
+          System.out.println("Dealer busted!");
+          // System.out.println("Player won!");
+          System.out.println("You won $" + betAmount + "!");
+          objPlayer._won += 1;
+        } else if (score > 21) {
+          // System.out.println("Player score: " + score);
+          // System.out.println("Delaer score: " + scoreDealer);
+          System.out.println("Player busted!");
+          objPlayer._money = objPlayer._money - betAmount;
+          System.out.println("You lost $" + betAmount + "!");
+        }
+        endGame = false;
+        if (objPlayer._money == 0) {
+          System.out.println("You have no more money to bet!");
+          endGame = true;
+          objPlayer.writeInfo(name);
+          System.out.println("Thank you for playing Infinite Blackjack!");
+        }
       } // loop - player plays a hand
       else if (choice.equalsIgnoreCase("N")) {
       endGame = true;
@@ -304,5 +303,6 @@ public class Blackjack {
       System.out.println("Thank you for playing Infinite Blackjack!");
     }
   } // while (endGame == false)
+
 }
 }
