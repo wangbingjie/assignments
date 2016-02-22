@@ -36,10 +36,10 @@ public class Blackjack {
         // a new file is created with that user's info
         System.out.println("Welcome, " + name + "!");
         System.out.println("Have fun on your first time playing Infinite Blackjack.");
-        // set initial values
-        objPlayer._hand = 0;
-        objPlayer._won = 0;
-        objPlayer._money = 100.00;
+        // initial values are:
+        // objPlayer._hand = 0;
+        // objPlayer._won = 0;
+        // objPlayer._money = 100.00;
         objPlayer.writeInfo(name);
       } else {
         // user info exists
@@ -279,6 +279,7 @@ public class Blackjack {
           System.out.println("Delaer score: " + scoreDealer);
           System.out.println("Dealer busted!");
           System.out.printf("You won $%.2f! %n", betAmount);
+          objPlayer._money = objPlayer._money + betAmount;
           objPlayer._won += 1;
         } else if (score > 21) {
           // System.out.println("Player score: " + score);
