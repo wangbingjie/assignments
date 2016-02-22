@@ -157,7 +157,6 @@ public class Blackjack {
             System.out.println("Score: " + score);
 
             if (score <= 21) {
-
             System.out.print("[H]it or [S]tay? > ");
             action = sc.next();
           } else {
@@ -205,10 +204,12 @@ public class Blackjack {
             houseStay = true;
           } else if (scoreDealer >= 18 && scoreDealer <= 21 ) {
             houseStay = true;
+            System.out.println("Stay!");
           } else if (scoreDealer == 17 && numAcesDealer >= 1) {
             houseStay = false;
           } else if (scoreDealer == 17 && numAcesDealer == 0) {
             houseStay = true;
+            System.out.println("Stay!");
           } else {
             houseStay = false;
           }
@@ -247,6 +248,7 @@ public class Blackjack {
             System.out.println("The player has a blackjack!");
             objPlayer._money = objPlayer._money + betAmount * 1.5;
             System.out.println("You won $" + (betAmount*1.5) + "!");
+            objPlayer._won += 1;
           } else if (score == scoreDealer) {
             // the player does not lose or gain any money
             System.out.println("Player score: " + score);
@@ -260,6 +262,7 @@ public class Blackjack {
             System.out.println("Delaer score: " + scoreDealer);
             System.out.println("Player won!");
             System.out.println("You won $" + betAmount + "!");
+            objPlayer._won += 1;
           } else if (score < scoreDealer && scoreDealer <= 21 ){
             System.out.println("Player score: " + score);
             System.out.println("Delaer score: " + scoreDealer);
@@ -270,14 +273,14 @@ public class Blackjack {
             System.out.println("Player score: " + score);
             System.out.println("Delaer score: " + scoreDealer);
             System.out.println("Dealer busted!");
-            System.out.println("Player won!");
+            // System.out.println("Player won!");
             System.out.println("You won $" + betAmount + "!");
+            objPlayer._won += 1;
           } else if (score > 21) {
-            System.out.println("Player score: " + score);
-            System.out.println("Delaer score: " + scoreDealer);
+            // System.out.println("Player score: " + score);
+            // System.out.println("Delaer score: " + scoreDealer);
             System.out.println("Player busted!");
             objPlayer._money = objPlayer._money - betAmount;
-            System.out.println("Dealer won!");
             System.out.println("You lost $" + betAmount + "!");
           }
           endGame = false;
