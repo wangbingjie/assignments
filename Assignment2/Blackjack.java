@@ -193,10 +193,8 @@ public class Blackjack {
 
           // The house player will follow a simple set of rules:
           // If the score is greater than 21, the house loses
-          // Otherwise, if the score is greater than or equal to 18 but
-          // less than or equal to 21, the house will stay
-          // If the score is exactly 17, and at least one card is an ace
-          // (a "soft" 17), the house will hit.
+          // Otherwise, if the score >= 18 but <= 21, the house will stay
+          // If the score is exactly 17, and at least one card is an ace (a "soft" 17), the house will hit.
           // If no cards are aces (a "hard" 17), the house will stay.
           // Otherwise, the house will hit
 
@@ -230,7 +228,6 @@ public class Blackjack {
 
             if (score <= 21 && scoreDealer > 21) {
               houseStay = true;
-              // System.out.println("Stay!");
             } else if (scoreDealer >= 18 && scoreDealer <= 21 ) {
               houseStay = true;
               System.out.println("Stay!");
@@ -283,8 +280,6 @@ public class Blackjack {
           objPlayer._money = objPlayer._money + betAmount;
           objPlayer._won += 1;
         } else if (score > 21) {
-          // System.out.println("Player score: " + score);
-          // System.out.println("Delaer score: " + scoreDealer);
           System.out.println("Player busted!");
           objPlayer._money = objPlayer._money - betAmount;
           System.out.printf("You lost $%.2f! %n", betAmount);
