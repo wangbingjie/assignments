@@ -226,10 +226,11 @@ public class Blackjack {
             pointsDealer += cDealerHit.getPoint();
             scoreDealer = classScore.getScore(pointsDealer, numAcesDealer);
             System.out.println("Card dealt: " + cDealerHit.toString());
+            System.out.println("Score: " + scoreDealer);
 
             if (score <= 21 && scoreDealer > 21) {
               houseStay = true;
-              System.out.println("Stay!");
+              // System.out.println("Stay!");
             } else if (scoreDealer >= 18 && scoreDealer <= 21 ) {
               houseStay = true;
               System.out.println("Stay!");
