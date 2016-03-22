@@ -1,0 +1,45 @@
+What planet is closest in size to our moon?
+5
+Venus
+Mercury
+Saturn
+Uranus
+Neptune
+1
+21
+16
+What is the color of Mercury?
+4
+Dark grey
+White
+Deep blue
+Dusty pink
+0
+21
+5
+What is Saturn mostly made of?
+4
+Helium
+Hydrogen
+Methane
+Ammonia
+1
+21
+10
+What is the only moon in the solar system known to have its own internally generated magnetic field?
+4
+Ganymede
+Callisto
+Europa
+Io
+0
+21
+13
+What is the core of Venus made of?
+3
+Copper
+Silver
+Iron
+2
+21
+19

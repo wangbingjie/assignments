@@ -56,7 +56,6 @@ public class Player {
     _money = newMoney;
   }
 
-  // Methods
   // - load information from a file
   // - save the information to a file
   public int writeInfo(String name) throws IOException {
