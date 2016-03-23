@@ -10,8 +10,17 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class Assignment3 {
+public class Quiz {
     public static void main(String[] args) throws IOException {
+
+        // read quiz txt file from command line
+        if (args.length > 0) {
+            // System.out.println("First arg is: " + args[0]);
+        } else {
+            System.out.println("No args given!");
+            System.exit(0);
+        }
+        String fileName = args[0];
 
         Scanner sc = new Scanner(System.in);
         List<String> queItem = new ArrayList<>();
@@ -26,7 +35,7 @@ public class Assignment3 {
 
         try {
             // create a Buffered Reader object instance with a FileReader
-            BufferedReader br = new BufferedReader(new FileReader("questions.txt"));
+            BufferedReader br = new BufferedReader(new FileReader(fileName));
 
             for (String next, line = br.readLine(); line != null; line = next) {
                 next = br.readLine();
