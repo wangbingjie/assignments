@@ -6,8 +6,8 @@ Saturn
 Uranus
 Neptune
 1
-21
-3
+23
+5
 What is the color of Mercury?
 4
 Dark grey
@@ -15,8 +15,8 @@ White
 Deep blue
 Dusty pink
 0
-21
-6
+23
+7
 What is Saturn mostly made of?
 4
 Helium
@@ -24,8 +24,8 @@ Hydrogen
 Methane
 Ammonia
 1
-21
-11
+23
+12
 What is the only moon in the solar system known to have its own internally generated magnetic field?
 4
 Ganymede
@@ -33,13 +33,13 @@ Callisto
 Europa
 Io
 0
-21
-14
+23
+15
 What is the core of Venus made of?
 3
 Copper
 Silver
 Iron
 2
-21
-17
+23
+18

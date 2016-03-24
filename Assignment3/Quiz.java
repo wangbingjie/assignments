@@ -54,11 +54,13 @@ public class Quiz {
 
         // handle exceptions
         catch (FileNotFoundException fnfe) {
-            System.out.println("file not found");
+            System.out.println("File not found!");
+            System.exit(0);
         }
 
         catch (IOException ioe) {
             ioe.printStackTrace();
+            System.exit(0);
         }
 
         String[] arrInputAns = new String[queItem.size()];
@@ -171,7 +173,7 @@ public class Quiz {
         double douPct = (((double)corrQuiz)/(corrQuiz + wrongQuiz)) * 100;
         System.out.printf("%14s %4d %n", p1, corrQuiz);
         System.out.printf("%14s %4d %n", p2, wrongQuiz);
-        System.out.printf("%12s %5.1f%% %n", p3, douPct);
+        System.out.printf("%12s %5.0f%% %n", p3, douPct);
 
         System.out.println('\n' + "Here are some cumulative statistics:");
         double[] arrPctCum = new double[queItem.size()];
