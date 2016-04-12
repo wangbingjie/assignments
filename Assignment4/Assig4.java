@@ -180,11 +180,6 @@ public class Assig4 extends JFrame {
             if (confirm == JOptionPane.YES_OPTION) {
                 castButton.setEnabled(false);
                 logButton.setEnabled(true);
-                for (Ballot b : ballotObjList) {
-                    b.disSelect();
-                    b.setBlack();
-                    b.disableButtons();
-                }
                 setVisible(true);
                 JOptionPane.showMessageDialog(null, "Thank you for your vote!", "Message", JOptionPane.INFORMATION_MESSAGE);
 
@@ -247,7 +242,7 @@ public class Assig4 extends JFrame {
                             PrintWriter out = new PrintWriter(bFile);
                             cateCands = b.getBCands();
                             for (String cand : cateCands) {
-                                if (selectedText.equals(cand)) {
+                                if (selectedText.equalsIgnoreCase(cand)) {
                                     out.println(cand + ":1");
                                 } else {
                                     out.println(cand + ":0");
@@ -281,13 +276,18 @@ public class Assig4 extends JFrame {
                                 out2.println(candsUp);
                             }
                             out2.close();
-
+                            
                             bFileUp.renameTo(new File(candId+".txt"));
                         }
                     }
                 }
                 catch (IOException ex) {
                     System.err.println("Caught IOException: " +  ex.getMessage());
+                }
+                for (Ballot b : ballotObjList) {
+                    b.disSelect();
+                    b.setBlack();
+                    b.disableButtons();
                 }
 
             } // if yes - confirmed
